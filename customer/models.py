@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin
+from customer.managers import CustomUserManager
 
 
 class Customer(models.Model):
@@ -17,3 +20,20 @@ class Customer(models.Model):
 
     class Meta:
         ordering = ('-id',)
+
+
+class User(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(unique=True, null=True, blank=True)
+    username = models.CharField(unique=True, null=True, blank=True, max_length=50)
+    phone_number = models.CharField(unique=True, null=True, blank=True, max_length=15)
+    date_of_birth = models.DateField(null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+
+    objects = CustomUserManager()
+    USERNAME_FIELD = 'phone_number'
+    REQUIRED_FIELDS = []
+
+    def __str__(self):
+        return self.email
