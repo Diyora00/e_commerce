@@ -24,17 +24,15 @@ def logout_user(request):
     return render(request, 'auth/logout.html')
 
 
-# def register(request):
-#
-#     if request.method == 'POST':
-#         form = RegisterForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('customers')
-#     else:
-#         form = RegisterForm()
-#
-#     context = {'form': form}
-#     return render(request, 'auth/register.html', context)
-#
-# # Create your views here.
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('customers')
+    else:
+        form = RegisterForm()
+
+    context = {'form': form}
+    return render(request, 'auth/register.html', context)
+

@@ -1,6 +1,6 @@
 from django.urls import path
 from customer.views import *
-from customer.auth import login_user,logout_user
+from customer.auth import login_user, logout_user, register
 
 
 urlpatterns = [
@@ -11,5 +11,5 @@ urlpatterns = [
     path('update_customer/<customer_id>', update_customer, name='update_customer'),
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
-    # path('register/', register, name='register'),
+    path('register/', register, name='register'),
 ]

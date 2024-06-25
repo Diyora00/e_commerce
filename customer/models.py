@@ -28,8 +28,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone_number = models.CharField(unique=True, null=True, blank=True, max_length=15)
     date_of_birth = models.DateField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=True)
+    is_superuser = models.BooleanField(default=True)
 
     objects = CustomUserManager()
     USERNAME_FIELD = 'phone_number'
