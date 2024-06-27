@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from baton.ai import AIModels
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'baton',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'product',
     'customer',
+    'baton.autodiscover',
 ]
 
 MIDDLEWARE = [
@@ -103,6 +106,78 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+# BATON = {
+#     'SITE_HEADER': 'Baton',
+#     'SITE_TITLE': 'Baton',
+#     'INDEX_TITLE': 'Site administration',
+#     'SUPPORT_HREF': 'https://github.com/otto-torino/django-baton/issues',
+#     'COPYRIGHT': 'copyright © 2017 <a href="https://www.otto.to.it">Otto srl</a>', # noqa
+#     'POWERED_BY': '<a href="https://www.otto.to.it">Otto srl</a>',
+#     'CONFIRM_UNSAVED_CHANGES': True,
+#     'SHOW_MULTIPART_UPLOADING': True,
+#     'ENABLE_IMAGES_PREVIEW': True,
+#     'CHANGELIST_FILTERS_IN_MODAL': True,
+#     'CHANGELIST_FILTERS_ALWAYS_OPEN': False,
+#     'CHANGELIST_FILTERS_FORM': True,
+#     'CHANGEFORM_FIXED_SUBMIT_ROW': True,
+#     'COLLAPSABLE_USER_AREA': False,
+#     'MENU_ALWAYS_COLLAPSED': False,
+#     'MENU_TITLE': 'Menu',
+#     'MESSAGES_TOASTS': False,
+#     'GRAVATAR_DEFAULT_IMG': 'retro',
+#     'GRAVATAR_ENABLED': True,
+#     'FORCE_THEME': None,
+#     'LOGIN_SPLASH': '/static/core/img/login-splash.png',
+#     'SEARCH_FIELD': {
+#         'label': 'Search contents...',
+#         'url': '/search/',
+#     },
+#     'BATON_CLIENT_ID': 'xxxxxxxxxxxxxxxxxxxx',
+#     'BATON_CLIENT_SECRET': 'xxxxxxxxxxxxxxxxxx',
+#     'AI': {
+#         'MODELS': "myapp.foo.bar",  # alternative to the below for lines, a function which returns the models dictionary
+#         'IMAGES_MODEL': AIModels.BATON_DALL_E_3,
+#         'SUMMARIZATIONS_MODEL': AIModels.BATON_GPT_4O,
+#         'TRANSLATIONS_MODEL': AIModels.BATON_GPT_4O,
+#         'ENABLE_TRANSLATIONS': True,
+#         'ENABLE_CORRECTIONS': True,
+#         'CORRECTION_SELECTORS': ["textarea", "input[type=text]:not(.vDateField):not([name=username]):not([name*=subject_location])"],
+#         'CORRECTIONS_MODEL': AIModels.BATON_GPT_3_5_TURBO,
+#     },
+#     'MENU': (
+#         {'type': 'title', 'label': 'main', 'apps': ('auth', )},
+#         {
+#             'type': 'app',
+#             'name': 'auth',
+#             'label': 'Authentication',
+#             'icon': 'fa fa-lock',
+#             'default_open': True,
+#             'models': (
+#                 {
+#                     'name': 'user',
+#                     'label': 'Users'
+#                 },
+#                 {
+#                     'name': 'group',
+#                     'label': 'Groups'
+#                 },
+#             )
+#         },
+#         {'type': 'title', 'label': 'Contents', 'apps': ('flatpages', )},
+#         {'type': 'model', 'label': 'Pages', 'name': 'flatpage', 'app': 'flatpages'},
+#         {'type': 'free', 'label': 'Custom Link', 'url': 'http://www.google.it', 'perms': ('flatpages.add_flatpage', 'auth.change_user')},
+#         {'type': 'free', 'label': 'My parent voice', 'children': [
+#             {'type': 'model', 'label': 'A Model', 'name': 'mymodelname', 'app': 'myapp', 'icon': 'fa fa-gavel'},
+#             {'type': 'free', 'label': 'Another custom link', 'url': 'http://www.google.it'},
+#         ]},
+#     )
+# }
+
+Baton = {
+    'SITE_HEADER': 'Admin',
+    'INDEX_TITLE': 'Falcon administration',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

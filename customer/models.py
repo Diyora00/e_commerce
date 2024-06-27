@@ -11,6 +11,7 @@ class Customer(models.Model):
     address = models.CharField(max_length=250)
     joined = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='customer/', null=True, blank=True)
+    is_active = models.BooleanField(default=False)
 
     def joined_time_format(self):
         return self.joined.strftime('%B %d, %Y at %I:%M %p')
